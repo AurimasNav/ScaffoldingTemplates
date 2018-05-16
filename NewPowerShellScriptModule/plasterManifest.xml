@@ -32,7 +32,7 @@
             <choice label='&amp;Jenkins' help="Adds default Jenkins tasks to PSake build script" value="Jenkins"/>
             <choice label='&amp;None' help="No options specified." value="None"/>
         </parameter>
-        <parameter condition="$PLASTER_PARAM_Options -contains 'Jenkins'" name='JenkinsSlaveLabel' type='text' default='PS' prompt='Enter the version number for the module'/>
+        <parameter condition="$PLASTER_PARAM_Options -contains 'Jenkins'" name='JenkinsSlaveLabel' type='text' default='PS' prompt='Enter the jenkins slave label'/>
     </parameters>
     <content>
         <message>&#10;&#10;Scaffolding your PowerShell Module...&#10;&#10;&#10;</message>
