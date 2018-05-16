@@ -4,7 +4,7 @@ pipeline
     {
         node
         {
-            label '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>'
+            label 'PS'
         }
     }
     stages 
@@ -13,7 +13,7 @@ pipeline
         {
             steps 
             {
-                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>')
+                node(label: 'PS')
                 {
                     powershell "Write-Output 'Initialize stage step 1'"
                 }
@@ -23,7 +23,7 @@ pipeline
         {
             steps 
             {
-                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>')
+                node(label: 'PS')
                 {
                     powershell "Write-Output 'Unit Test stage step 1'"
                 }
@@ -33,7 +33,7 @@ pipeline
         {
             steps 
             {
-                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>') 
+                node(label: 'PS') 
                 {
                     powershell "Write-Output 'Integration Test stage step 1'"
                 }
@@ -43,7 +43,7 @@ pipeline
         {
             steps 
             {
-                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>')
+                node(label: 'PS')
                 {
                     powershell "Write-Output 'Slave Cleanup stage step 1'"
                 }
