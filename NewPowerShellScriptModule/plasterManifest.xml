@@ -32,6 +32,7 @@
             <choice label='&amp;Jenkins' help="Adds default Jenkins tasks to PSake build script" value="Jenkins"/>
             <choice label='&amp;None' help="No options specified." value="None"/>
         </parameter>
+        <parameter condition="$PLASTER_PARAM_Options -contains 'Jenkins'" name='JenkinsSlaveLabel' type='text' default='PS' prompt='Enter the version number for the module'/>
     </parameters>
     <content>
         <message>&#10;&#10;Scaffolding your PowerShell Module...&#10;&#10;&#10;</message>
@@ -39,8 +40,9 @@
         <file condition="$PLASTER_PARAM_Editor -eq 'VSCode'" source='editor\VSCode\settings.json' destination='.vscode\settings.json' />
         <file condition="$PLASTER_PARAM_Editor -eq 'VSCode'" source='editor\VSCode\tasks.json' destination='.vscode\tasks.json' />
         <file source='ReleaseNotes.md' destination=''/>
-        <file source='README.md' destination=''/>
+        <templateFile source='README.md' destination=''/>
         <templateFile source='test\Module.T.ps1' destination='test\${PLASTER_PARAM_ModuleName}.Tests.ps1'/>
+        <templateFile condition="$PLASTER_PARAM_Options -contains 'Jenkins'" source='Jenkinsfile' destination=''/>
         <modify path='.vscode\tasks.json' encoding='UTF8-NoBOM' condition="$PLASTER_PARAM_Editor -eq 'VSCode'">
             <replace condition="$PLASTER_FileContent -notmatch '// Author:'">
                 <original>(?s)^(.*)</original>
