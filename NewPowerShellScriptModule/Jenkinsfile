@@ -1,0 +1,53 @@
+pipeline
+{
+    agent
+    {
+        node
+        {
+            label '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>'
+        }
+    }
+    stages 
+    {
+        stage('Initialize') 
+        {
+            steps 
+            {
+                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>')
+                {
+                    powershell "Write-Output 'Initialize stage step 1'"
+                }
+            }
+        }
+        stage('Unit Test')
+        {
+            steps 
+            {
+                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>')
+                {
+                    powershell "Write-Output 'Unit Test stage step 1'"
+                }
+            }
+        }
+        stage('Integration Test') 
+        {
+            steps 
+            {
+                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>') 
+                {
+                    powershell "Write-Output 'Integration Test stage step 1'"
+                }
+            }
+        }
+        stage('Slave Cleanup')
+        {
+            steps 
+            {
+                node(label: '<%=$PLASTER_PARAM_JenkinsSlaveLabel%>')
+                {
+                    powershell "Write-Output 'Slave Cleanup stage step 1'"
+                }
+            }
+        }
+    }
+}
